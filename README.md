@@ -2,7 +2,9 @@
 
 ### Suporte ao cliente
 
-- [ ] Página de contato com o suporte
-- [ ] Componentes relacionados ao suporte ao cliente
-  - [ ] Formulário de contato
-  - [ ] Chat de atendimento
+- [ ] Página de solicitações
+  - [ ] Visão de usuário
+  - [ ] Visão de administrador
+- [ ] Página de categorias
+- [ ] Página de solicitação
+- [ ] Página de criar ticket
