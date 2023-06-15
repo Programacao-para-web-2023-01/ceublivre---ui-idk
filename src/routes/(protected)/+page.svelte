@@ -14,7 +14,7 @@
 			<div class="font-bold flex flex-row justify-between">
 				<span class="truncate w-1/2" title={ticket.message}>{ticket.message}</span>
 				<span>{ticket.statusId}</span>
-				<span>{ticket.priorityId}</span>
+				<span>{ticket.categoryId}</span>
 				<a href="/ticket/{ticket.id}" class="btn btn-neutral btn-xs"> Detalhes </a>
 			</div>
 		{/each}
