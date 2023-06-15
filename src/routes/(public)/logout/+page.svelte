@@ -1,1 +1,1 @@
-<p>Logout</p>
+<p>Saindo...</p>

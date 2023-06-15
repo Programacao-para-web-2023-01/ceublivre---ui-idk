@@ -9,7 +9,7 @@ export default {
 		themes: [
 			{
 				light: {
-					...require("daisyui/src/colors/themes")["[data-theme=light]"],
+					...require("daisyui/src/theming/themes")["[data-theme=light]"],
 					primary: "#18181b"
 				}
 			}

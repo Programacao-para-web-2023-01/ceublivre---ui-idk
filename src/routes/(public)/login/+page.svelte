@@ -28,19 +28,19 @@
 	<h2 class="text-3xl">Entrar</h2>
 	<div class="flex flex-col gap-3">
 		<label class="grid">
-			Nome:
+			E-mail:
 			<input
-				type="text"
-				name="name"
-				placeholder="Insira seu nome"
+				type="email"
+				name="email"
+				placeholder="email@exemplo.com"
 				class="input input-bordered input-primary w-full mt-1 font-semibold"
 			/>
 		</label>
 		<label class="grid">
 			Função:
-			<select class="select select-bordered select-primary mt-1 font-semibold">
-				<option selected>Usuário</option>
-				<option>Administrador</option>
+			<select name="role" class="select select-bordered select-primary mt-1 font-semibold">
+				<option value="user" selected>Usuário</option>
+				<option value="admin">Administrador</option>
 			</select>
 		</label>
 	</div>
