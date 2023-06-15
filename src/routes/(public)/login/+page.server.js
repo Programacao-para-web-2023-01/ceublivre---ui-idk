@@ -27,10 +27,13 @@ export const actions = {
 			.setExpirationTime("1h")
 			.sign(new TextEncoder().encode(env.SECRET));
 
-		cookies.set("token", jwt);
+		cookies.set("token", jwt, {
+			path: "/",
+			maxAge: 3600,
+			httpOnly: true,
+			secure: true
+		});
 
-		return {
-			ok: true
-		};
+		return {};
 	}
 };

@@ -1,28 +1,12 @@
 <script>
-	// import { enhance } from "$app/forms";
-
-	// /** @type {import("./$types").ActionData} */
-	// export let form;
-
 	let formLoading = false;
-
-	// $: if (!form?.success) formLoading = false;
 </script>
 
-<!-- <form
-	use:enhance={() => {
-		return async ({ update }) => {
-			await update({ reset: false });
-		};
-	}}
+<form
+	method="post"
 	on:submit={() => {
 		formLoading = true;
 	}}
-	method="post"
-	class="mt-4 flex flex-col items-stretch gap-8 w-full max-w-sm"
-> -->
-<form
-	on:submit|preventDefault={() => {}}
 	class="mt-4 flex flex-col items-stretch gap-8 w-full max-w-sm"
 >
 	<h2 class="text-3xl">Entrar</h2>
@@ -33,12 +17,13 @@
 				type="email"
 				name="email"
 				placeholder="email@exemplo.com"
+				required
 				class="input input-bordered input-primary w-full mt-1 font-semibold"
 			/>
 		</label>
 		<label class="grid">
 			Função:
-			<select name="role" class="select select-bordered select-primary mt-1 font-semibold">
+			<select name="role" required class="select select-bordered select-primary mt-1 font-semibold">
 				<option value="user" selected>Usuário</option>
 				<option value="admin">Administrador</option>
 			</select>
