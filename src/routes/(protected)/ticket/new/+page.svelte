@@ -1,4 +1,9 @@
-@@ -0,0 +1,48 @@
+<script>
+	/** @type {import("./$types").PageData} */
+	export let data;
+	const { categories } = data;
+</script>
+
 <div class="flex flex-col gap-8 md:gap-16 p-4">
 	<h2 class="text-4xl font-bold text-center justify-self-center mb-8">Criaçao de Tickets</h2>
 
@@ -23,11 +28,9 @@
 					<span class="label-text">Selecione uma categoria</span>
 				</label>
 				<select class="select select-bordered">
-					<option class="font-bold">Star Wars</option>
-					<option class="font-bold">Harry Potter</option>
-					<option class="font-bold">Lord of the Rings</option>
-					<option class="font-bold">Planet of the Apes</option>
-					<option class="font-bold">Star Trek</option>
+					{#each categories as category}
+						<option class="font-bold" value={category.id}>{category.name}</option>
+					{/each}
 				</select>
 			</div>
 			<div class="form-control w-full max-w-xs">

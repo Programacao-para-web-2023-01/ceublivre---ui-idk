@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex w-8/12 justify-end">
-	<button class="btn btn-primary my-4">Criar ticket</button>
+	<button class="btn btn-primary my-4"><a href="/ticket/new">Criar ticket</a></button>
 </div>
 
 <div class="w-8/12 shadow-xl border-4 border-neutral rounded-2xl">
