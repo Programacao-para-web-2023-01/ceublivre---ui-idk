@@ -31,9 +31,9 @@
 				{#each categories as category}
 					<li class="flex flex-row bg-base-100 items-center shadow-sm rounded-lg p-2 pl-4">
 						<span class="grow">{category.name}</span>
-						<button class="btn btn-square btn-outline btn-error btn-sm" value={category.id}
-							><Trash /></button
-						>
+						<button class="btn btn-square btn-outline btn-error btn-sm" value={category.id}>
+							<Trash />
+						</button>
 					</li>
 				{/each}
 			</ul>

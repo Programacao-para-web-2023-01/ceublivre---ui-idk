@@ -1,24 +1,12 @@
-import { env } from "$env/dynamic/private";
-
-const { API_ENDPOINT } = env;
-
 /** @type {import("./$types").PageServerLoad} */
-export async function load({ params }) {
+export async function load({ params, locals }) {
 	const { id } = params;
 
-	const res = await fetch(`${API_ENDPOINT}/ticket/${id}`, {
-		headers: {
-			Authorization: ""
-		}
-	});
-	const json = await res.json();
+	/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Ticket>} */
+	const ticket = await locals.api.get(`/ticket/${id}`);
 
-	const res2 = await fetch(`${API_ENDPOINT}/category/${json.data.categoryId}`, {
-		headers: {
-			Authorization: ""
-		}
-	});
-	const json2 = await res2.json();
+	/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Category>} */
+	const category = await locals.api.get(`/category/${ticket.data.categoryId}`);
 
-	return { ticket: json.data, category: json2.data };
+	return { ticket: ticket.data, category: category.data };
 }

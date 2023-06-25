@@ -1,15 +1,7 @@
-import { env } from "$env/dynamic/private";
-
-const { API_ENDPOINT } = env;
-
 /** @type {import("./$types").PageServerLoad} */
-export async function load() {
-	const res = await fetch(`${API_ENDPOINT}/ticket`, {
-		method: "GET",
-		headers: {
-			Authorization: ""
-		}
-	});
-	const json = await res.json();
-	return { tickets: json.data };
+export async function load({ locals }) {
+	/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Ticket[]>} */
+	const tickets = await locals.api.get("/ticket");
+
+	return { tickets: tickets.data };
 }
