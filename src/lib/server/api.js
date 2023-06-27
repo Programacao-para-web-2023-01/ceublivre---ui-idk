@@ -110,4 +110,31 @@ export class ApiClient {
 
 		return json;
 	}
+
+	/**
+	 * @template T
+	 * @param {string} path
+	 * @param {object} payload
+	 * @returns {Promise<import("./models").ApiPayload<T>>}
+	 **/
+	async multipart(path = "/", payload = {}) {
+		const formData = new FormData();
+
+		Object.entries(payload).forEach(([key, value]) => {
+			formData.append(key, value);
+		});
+
+		const res = await fetch(ApiClient.apiUrl(path), {
+			method: "post",
+			headers: {
+				Authorization: `Bearer ${this.token}`
+			},
+			body: formData
+		});
+
+		/** @type {import("./models").ApiPayload<T>} */
+		const json = await res.json();
+
+		return json;
+	}
 }
