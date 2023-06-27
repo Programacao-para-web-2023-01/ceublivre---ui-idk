@@ -4,7 +4,7 @@
 	const { categories } = data;
 </script>
 
-<div class="flex flex-col gap-8 md:gap-16 p-4">
+<div class="flex flex-col gap-6 md:gap-12 p-4">
 	<h2 class="text-4xl font-bold text-center justify-self-center mb-8">Criaçao de Tickets</h2>
 
 	<div class="card bg-base-300 shadow-xl">
