@@ -17,6 +17,7 @@ export const actions = {
 			name: category
 		};
 
+		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Category>} */
 		await locals.api.post("/category", content);
 
 		return {};

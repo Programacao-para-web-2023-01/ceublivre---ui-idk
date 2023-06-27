@@ -97,17 +97,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- <div class="alert alert-success">
-	<CheckCircle />
-	<span>Nova categoria adicionada com sucesso</span>
-	<span>Categoria excluida com sucesso</span>
-	<span>Categoria modificada com sucesso</span>
-</div>
-
-<div class="alert alert-error">
-	<ExclamationCircle />
-	<span>Erro ao adicionar uma nova categoria</span>
-	<span>Erro ao excluir uma categoria</span>
-	<span>Erro ao modificar uma categoria</span>
-</div> -->
