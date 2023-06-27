@@ -107,16 +107,10 @@ export class ApiClient {
 	/**
 	 * @template T
 	 * @param {string} path
-	 * @param {object} payload
+	 * @param {FormData} formData
 	 * @returns {Promise<import("./models").ApiPayload<T>>}
 	 **/
-	async multipart(path = "/", payload = {}) {
-		const formData = new FormData();
-
-		Object.entries(payload).forEach(([key, value]) => {
-			formData.append(key, value);
-		});
-
+	async multipart(path = "/", formData) {
 		const res = await fetch(ApiClient.apiUrl(path), {
 			method: "post",
 			headers: {
