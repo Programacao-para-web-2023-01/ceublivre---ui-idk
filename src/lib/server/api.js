@@ -93,21 +93,14 @@ export class ApiClient {
 	}
 
 	/**
-	 * @template T
 	 * @param {string} path
-	 * @returns {Promise<import("./models").ApiPayload<T>>}
 	 **/
 	async delete(path = "/") {
-		const res = await fetch(ApiClient.apiUrl(path), {
+		await fetch(ApiClient.apiUrl(path), {
 			method: "delete",
 			headers: {
 				Authorization: `Bearer ${this.token}`
 			}
 		});
-
-		/** @type {import("./models").ApiPayload<T>} */
-		const json = await res.json();
-
-		return json;
 	}
 }
