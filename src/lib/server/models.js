@@ -16,6 +16,7 @@
  * @typedef {object} Ticket
  * @property {number} id
  * @property {string} message
+ * @property {string} imageFileId
  * @property {string} userId
  * @property {number} statusId
  * @property {number} categoryId
