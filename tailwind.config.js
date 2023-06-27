@@ -10,7 +10,8 @@ export default {
 			{
 				light: {
 					...require("daisyui/src/theming/themes")["[data-theme=light]"],
-					primary: "#18181b"
+					primary: "#18181b",
+					"primary-content": "#F4F4F5"
 				}
 			}
 		]
