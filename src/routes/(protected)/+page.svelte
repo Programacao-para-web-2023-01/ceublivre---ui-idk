@@ -9,7 +9,7 @@
 	<a href="/category" class="btn btn-primary btn-sm my-4 text-base-100">Editar categorias</a>
 </div>
 
-<div class="w-8/12 shadow-xl border-4 border-neutral rounded-2xl">
+<div class="w-8/12 shadow-xl border-4 border-primary rounded-2xl">
 	<div class="flex flex-col gap-4 px-4 py-2">
 		{#each tickets as ticket}
 			<div class="font-bold flex flex-row justify-between items-center">
@@ -21,8 +21,8 @@
 						<span class="truncate">{ticket.message}</span>
 					</a>
 				</div>
-				<span>{ticket.statusId}</span>
-				<span>{ticket.categoryId}</span>
+				<span>{ticket.status}</span>
+				<span>{ticket.category}</span>
 				<a href="/ticket/{ticket.id}" class="btn btn-primary text-base-100 btn-sm">Detalhes</a>
 			</div>
 		{/each}

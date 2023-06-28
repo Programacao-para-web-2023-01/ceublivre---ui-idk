@@ -19,7 +19,9 @@
  * @property {string} imageFileId
  * @property {string} userId
  * @property {number} statusId
+ * @property {string?} status
  * @property {number} categoryId
+ * @property {string?} category
  * @property {Date} createdAt
  * @property {Date} closedAt
  */
