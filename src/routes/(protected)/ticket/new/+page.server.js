@@ -10,19 +10,10 @@ export async function load({ locals }) {
 export const actions = {
 	default: async ({ request, locals }) => {
 		const formData = await request.formData();
-		const file = formData.get("image");
-		const category = formData.get("categoryId")?.toString() ?? "";
-		const message = formData.get("message")?.toString() ?? "";
 
-		const content = {
-			message: message,
-			file: file,
-			name: category
-		};
+		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Ticket>} */
+		const ticket = await locals.api.multipart("/ticket", formData);
 
-		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Category>} */
-		await locals.api.multipart("/ticket", content);
-
-		return {};
+		return { form: ticket };
 	}
 };

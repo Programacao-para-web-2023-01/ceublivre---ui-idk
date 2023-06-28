@@ -4,7 +4,7 @@
 	const { categories } = data;
 </script>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 	<div class="flex flex-col gap-6 md:gap-12 p-4">
 		<h2 class="text-4xl font-bold text-center justify-self-center mb-4">Criação de Ticket</h2>
 
