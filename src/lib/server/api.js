@@ -1,4 +1,5 @@
 import { env } from "$env/dynamic/private";
+import { error } from "@sveltejs/kit";
 
 export class ApiClient {
 	/**
@@ -36,16 +37,23 @@ export class ApiClient {
 	async get(path = "/", payload = {}) {
 		const query = new URLSearchParams({ ...payload }).toString();
 
-		const res = await fetch(ApiClient.apiUrl(path) + (query.length ? `?${query}` : ""), {
-			headers: {
-				Authorization: `Bearer ${this.token}`
-			}
-		});
+		try {
+			const res = await fetch(ApiClient.apiUrl(path) + (query.length ? `?${query}` : ""), {
+				headers: {
+					Authorization: `Bearer ${this.token}`
+				}
+			});
 
-		/** @type {import("./models").ApiPayload<T>} */
-		const json = await res.json();
+			/** @type {import("./models").ApiPayload<T>} */
+			const json = await res.json();
 
-		return json;
+			return json;
+		} catch (e) {
+			const status = e.status ? e.status : 400;
+			const err = e.body ? e.body : "Erro ao retornar dados da API.";
+			
+			throw error(status, err);
+		}
 	}
 
 	/**
