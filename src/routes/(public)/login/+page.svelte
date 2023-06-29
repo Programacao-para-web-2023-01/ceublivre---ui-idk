@@ -1,14 +1,4 @@
-<script>
-	let formLoading = false;
-</script>
-
-<form
-	method="post"
-	on:submit={() => {
-		formLoading = true;
-	}}
-	class="mt-4 flex flex-col items-stretch gap-8 w-full max-w-sm"
->
+<form method="post" class="mt-4 flex flex-col items-stretch gap-8 w-full max-w-sm">
 	<h2 class="text-3xl">Entrar</h2>
 	<div class="flex flex-col gap-3">
 		<label class="grid">
@@ -29,7 +19,5 @@
 			</select>
 		</label>
 	</div>
-	<button type="submit" class={`btn btn-primary ${formLoading && "loading opacity-50"}`}>
-		Continuar
-	</button>
+	<button type="submit" class="btn btn-primary"> Continuar </button>
 </form>
