@@ -18,7 +18,7 @@ export async function load({ params, locals }) {
 		return reply;
 	});
 
-	// As we're using edge api and front-end, there's a limit into this function (needs review)
+	// As we're using edge API and front-end, there's a limit to this function (needs review)
 	// const imageBlob = await locals.api.file(`/ticket/${id}/image`);
 	// const imageUrl = URL.createObjectURL(imageBlob);
 

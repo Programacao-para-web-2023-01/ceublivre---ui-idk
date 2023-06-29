@@ -1,3 +1,5 @@
+import { redirect } from "@sveltejs/kit";
+
 /** @type {import("./$types").PageServerLoad} */
 export async function load({ locals }) {
 	/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Category[]>} */
@@ -11,9 +13,12 @@ export const actions = {
 	default: async ({ request, locals }) => {
 		const formData = await request.formData();
 
-		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Ticket>} */
-		const ticket = await locals.api.multipart("/ticket", formData);
+		// As we're using edge API and front-end, there's a limit to this function (needs review)
+		if (formData.has("image")) formData.delete("image");
 
-		return { form: ticket };
+		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Ticket>} */
+		await locals.api.multipart("/ticket", formData);
+
+		throw redirect(302, "/");
 	}
 };
