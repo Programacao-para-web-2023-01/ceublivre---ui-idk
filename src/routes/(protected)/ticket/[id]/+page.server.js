@@ -1,4 +1,5 @@
 import { ApiClient } from "$lib/server/api";
+import { redirect } from "@sveltejs/kit";
 
 /** @type {import("./$types").PageServerLoad} */
 export async function load({ params, locals }) {
@@ -52,6 +53,6 @@ export const actions = {
 		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Status>} */
 		await locals.api.get(`/ticket/${ticketId}/close`);
 
-		return {};
+		throw redirect(302, "/");
 	}
 };

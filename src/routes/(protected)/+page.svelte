@@ -7,9 +7,10 @@
 <div class="flex w-3/4 justify-between gap-2 mt-8 mb-5 items-center">
 	<h1 class="font-bold text-2xl">Listagem de Tickets</h1>
 	<div>
-		<a href="/ticket/new" class="btn btn-primary btn-sm text-base-100">Criar ticket</a>
 		{#if user.role === "admin"}
 			<a href="/category" class="btn btn-primary btn-sm text-base-100">Editar categorias</a>
+		{:else}
+			<a href="/ticket/new" class="btn btn-primary btn-sm text-base-100">Criar ticket</a>
 		{/if}
 	</div>
 </div>
