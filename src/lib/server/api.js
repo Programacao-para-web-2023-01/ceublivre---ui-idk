@@ -37,23 +37,18 @@ export class ApiClient {
 	async get(path = "/", payload = {}) {
 		const query = new URLSearchParams({ ...payload }).toString();
 
-		try {
-			const res = await fetch(ApiClient.apiUrl(path) + (query.length ? `?${query}` : ""), {
-				headers: {
-					Authorization: `Bearer ${this.token}`
-				}
-			});
+		const res = await fetch(ApiClient.apiUrl(path) + (query.length ? `?${query}` : ""), {
+			headers: {
+				Authorization: `Bearer ${this.token}`
+			}
+		});
 
-			/** @type {import("./models").ApiPayload<T>} */
-			const json = await res.json();
+		if (!res.ok) throw error(500, { message: "Erro ao retornar dados da API." });
 
-			return json;
-		} catch (e) {
-			const status = e.status ? e.status : 400;
-			const err = e.body ? e.body : "Erro ao retornar dados da API.";
-			
-			throw error(status, err);
-		}
+		/** @type {import("./models").ApiPayload<T>} */
+		const json = await res.json();
+
+		return json;
 	}
 
 	/**
@@ -71,6 +66,8 @@ export class ApiClient {
 			},
 			body: JSON.stringify(payload)
 		});
+
+		if (!res.ok) throw error(500, { message: "Erro ao retornar dados da API." });
 
 		/** @type {import("./models").ApiPayload<T>} */
 		const json = await res.json();
@@ -94,6 +91,8 @@ export class ApiClient {
 			body: JSON.stringify(payload)
 		});
 
+		if (!res.ok) throw error(500, { message: "Erro ao retornar dados da API." });
+
 		/** @type {import("./models").ApiPayload<T>} */
 		const json = await res.json();
 
@@ -104,12 +103,14 @@ export class ApiClient {
 	 * @param {string} path
 	 **/
 	async delete(path = "/") {
-		await fetch(ApiClient.apiUrl(path), {
+		const res = await fetch(ApiClient.apiUrl(path), {
 			method: "delete",
 			headers: {
 				Authorization: `Bearer ${this.token}`
 			}
 		});
+
+		if (!res.ok) throw error(500, { message: "Erro ao retornar dados da API." });
 	}
 
 	/**
@@ -127,6 +128,8 @@ export class ApiClient {
 			body: formData
 		});
 
+		if (!res.ok) throw error(500, { message: "Erro ao retornar dados da API." });
+
 		/** @type {import("./models").ApiPayload<T>} */
 		const json = await res.json();
 
@@ -143,6 +146,8 @@ export class ApiClient {
 				Authorization: `Bearer ${this.token}`
 			}
 		});
+
+		if (!res.ok) throw error(500, { message: "Erro ao retornar dados da API." });
 
 		/** @type {Blob} */
 		const blob = await res.blob();
