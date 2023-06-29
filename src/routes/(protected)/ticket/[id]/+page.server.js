@@ -8,5 +8,8 @@ export async function load({ params, locals }) {
 	/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Category>} */
 	const category = await locals.api.get(`/category/${ticket.data.categoryId}`);
 
-	return { ticket: ticket.data, category: category.data };
+	const imageBlob = await locals.api.file(`/ticket/${id}/image`);
+	const imageUrl = URL.createObjectURL(imageBlob);
+
+	return { ticket: ticket.data, category: category.data, image: imageUrl };
 }

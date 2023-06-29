@@ -124,4 +124,21 @@ export class ApiClient {
 
 		return json;
 	}
+
+	/**
+	 * @param {string} path
+	 * @returns {Promise<Blob>}
+	 **/
+	async file(path = "/") {
+		const res = await fetch(ApiClient.apiUrl(path), {
+			headers: {
+				Authorization: `Bearer ${this.token}`
+			}
+		});
+
+		/** @type {Blob} */
+		const blob = await res.blob();
+
+		return blob;
+	}
 }
