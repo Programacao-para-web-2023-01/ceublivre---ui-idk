@@ -17,13 +17,20 @@
 				<span>{category.name}</span>
 				<span>{new Date(ticket.createdAt).toLocaleString("pt-BR")}</span>
 			</div>
+			{#if user.role === "admin"}
+				<form method="post" action="?/closeTicket" class="font-bold flex justify-center">
+					<button class="btn btn-primary btn-sm" name="closeId" value={ticket.id} type="submit">
+						Fechar ticket
+					</button>
+				</form>
+			{/if}
 		</div>
 	</div>
 
-	<div class="flex flex-col md:w-1/2 gap-4">
+	<div class="flex flex-col md:w-1/2 gap-12">
 		{#if replies.length > 0}
 			<div class="card card-compact w-full bg-base-100 shadow-xl">
-				<div class="card-body max-h-[70vh] overflow-x-auto">
+				<div class="card-body max-h-[60vh] overflow-x-auto">
 					{#each replies as reply}
 						<div class={`chat ${reply.user.email === user.email ? "chat-end" : "chat-start"}`}>
 							<div class="chat-header">
@@ -35,11 +42,15 @@
 					{/each}
 				</div>
 			</div>
+		{:else}
+			<span class="bg-base-100 rounded-lg font-bold text-4xl h-[60vh] text-center py-32">
+				Sem resposta ainda
+			</span>
 		{/if}
 
 		<div class="card card-compact w-full bg-base-100 shadow-xl">
 			<div class="card-body">
-				<form method="post">
+				<form method="post" action="?/message">
 					<input type="hidden" name="ticket-id" value={ticket.id.toString()} />
 					<div class="form-control w-full -mt-4">
 						<!-- svelte-ignore a11y-label-has-associated-control -->

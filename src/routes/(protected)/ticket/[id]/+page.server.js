@@ -33,7 +33,7 @@ export async function load({ params, locals }) {
 
 /** @type {import("./$types").Actions} */
 export const actions = {
-	default: async ({ request, locals }) => {
+	message: async ({ request, locals }) => {
 		const formData = await request.formData();
 
 		const ticketId = formData.get("ticket-id")?.toString() ?? "";
@@ -43,5 +43,15 @@ export const actions = {
 		const reply = await locals.api.post(`/ticket/${ticketId}/reply`, { message });
 
 		return { form: reply };
+	},
+	closeTicket: async ({ request, locals }) => {
+		const formData = await request.formData();
+
+		const ticketId = formData.get("closeId")?.toString() ?? "";
+
+		/** @type {import("$lib/server/models").ApiPayload<import("$lib/server/models").Status>} */
+		await locals.api.get(`/ticket/${ticketId}/close`);
+
+		return {};
 	}
 };
