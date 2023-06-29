@@ -11,7 +11,7 @@ export async function load({ cookies }) {
 
 /** @type {import("./$types").Actions} */
 export const actions = {
-	 default: async ({ request, cookies }) => {
+	default: async ({ request, cookies }) => {
 		const formData = await request.formData();
 
 		const email = formData.get("email")?.toString() ?? "";

@@ -1,12 +1,14 @@
 <script>
 	/** @type {import("./$types").PageData} */
 	export let data;
-	const { tickets } = data;
+	const { tickets, user } = data;
 </script>
 
 <div class="flex w-8/12 justify-end gap-2">
 	<a href="/ticket/new" class="btn btn-primary btn-sm my-4 text-base-100">Criar ticket</a>
-	<a href="/category" class="btn btn-primary btn-sm my-4 text-base-100">Editar categorias</a>
+	{#if user.role === "admin"}
+		<a href="/category" class="btn btn-primary btn-sm my-4 text-base-100">Editar categorias</a>
+	{/if}
 </div>
 
 <div class="w-8/12 shadow-xl border-4 border-primary rounded-2xl">

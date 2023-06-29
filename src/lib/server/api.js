@@ -13,6 +13,20 @@ export class ApiClient {
 		this.token = token;
 	}
 
+	/** @param {string} userId */
+	static user(userId) {
+		const userIdSplit = userId.split("|");
+
+		/** @type {import("./models").JwtPayload} */
+		const payload = {
+			email: userIdSplit[1],
+			// @ts-ignore
+			role: userIdSplit[0]
+		};
+
+		return payload;
+	}
+
 	/**
 	 * @private
 	 * @static
@@ -48,6 +62,12 @@ export class ApiClient {
 		/** @type {import("./models").ApiPayload<T>} */
 		const json = await res.json();
 
+		// @ts-ignore
+		if (json.data.userId) {
+			// @ts-ignore
+			json.data.user = ApiClient.user(json.data.userId);
+		}
+
 		return json;
 	}
 
@@ -72,6 +92,12 @@ export class ApiClient {
 		/** @type {import("./models").ApiPayload<T>} */
 		const json = await res.json();
 
+		// @ts-ignore
+		if (json.data.userId) {
+			// @ts-ignore
+			json.data.user = ApiClient.user(json.data.userId);
+		}
+
 		return json;
 	}
 
@@ -95,6 +121,12 @@ export class ApiClient {
 
 		/** @type {import("./models").ApiPayload<T>} */
 		const json = await res.json();
+
+		// @ts-ignore
+		if (json.data.userId) {
+			// @ts-ignore
+			json.data.user = ApiClient.user(json.data.userId);
+		}
 
 		return json;
 	}

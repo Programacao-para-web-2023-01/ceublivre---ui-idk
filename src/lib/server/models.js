@@ -18,6 +18,7 @@
  * @property {string} message
  * @property {string} imageFileId
  * @property {string} userId
+ * @property {JwtPayload} user
  * @property {number} statusId
  * @property {string?} status
  * @property {number} categoryId
@@ -37,6 +38,7 @@
  * @typedef {object} Reply
  * @property {number} id
  * @property {string} userId
+ * @property {JwtPayload} user
  * @property {number} ticketId
  * @property {string} message
  * @property {Date} createdAt

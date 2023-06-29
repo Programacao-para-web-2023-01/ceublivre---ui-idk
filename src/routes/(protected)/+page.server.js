@@ -15,5 +15,5 @@ export async function load({ locals }) {
 		}
 	}
 
-	return { tickets: tickets.data };
+	return { tickets: tickets.data, user: locals.user };
 }
