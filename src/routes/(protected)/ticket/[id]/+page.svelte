@@ -1,14 +1,14 @@
 <script>
 	/** @type {import("./$types").PageData} */
 	export let data;
-	const { ticket, category, image, replies, user } = data;
+	const { ticket, category, replies, user } = data;
 </script>
 
 <div class="card-body flex flex-col md:flex-row gap-8 items-center">
 	<div class="card card-compact md:w-1/2 bg-base-100 shadow-xl max-h-[85vh] overflow-x-auto">
 		<div class="card-body flex flex-col gap-8">
 			<div class="flex justify-center">
-				<img src={image} alt="" class="rounded-lg object-fill md:w-2/5" />
+				<img src="/default-img.jpg" alt="" class="rounded-lg object-fill" />
 			</div>
 			<p class="font-medium text-lg text-justify">
 				{ticket.message}

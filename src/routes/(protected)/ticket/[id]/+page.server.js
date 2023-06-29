@@ -18,13 +18,14 @@ export async function load({ params, locals }) {
 		return reply;
 	});
 
-	const imageBlob = await locals.api.file(`/ticket/${id}/image`);
-	const imageUrl = URL.createObjectURL(imageBlob);
+	// As we're using edge api and front-end, there's a limit into this function (needs review)
+	// const imageBlob = await locals.api.file(`/ticket/${id}/image`);
+	// const imageUrl = URL.createObjectURL(imageBlob);
 
 	return {
 		ticket: ticket.data,
 		category: category.data,
-		image: imageUrl,
+		// image: imageUrl,
 		replies: replies.data,
 		user: locals.user
 	};
