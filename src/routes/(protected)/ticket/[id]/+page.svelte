@@ -29,7 +29,7 @@
 
 	<div class="flex flex-col md:w-1/2 gap-12">
 		{#if replies.length > 0}
-			<div class="card card-compact w-full bg-base-100 shadow-xl">
+			<div class="card card-compact w-full bg-base-100 shadow-xl h-[60vh]">
 				<div class="card-body max-h-[60vh] overflow-x-auto">
 					{#each replies as reply}
 						<div class={`chat ${reply.user.email === user.email ? "chat-end" : "chat-start"}`}>
