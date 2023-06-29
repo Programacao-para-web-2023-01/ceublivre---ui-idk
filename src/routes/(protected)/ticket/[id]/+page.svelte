@@ -21,19 +21,21 @@
 	</div>
 
 	<div class="flex flex-col md:w-1/2 gap-4">
-		<div class="card card-compact w-full bg-base-100 shadow-xl">
-			<div class="card-body max-h-[70vh] overflow-x-auto">
-				{#each replies as reply}
-					<div class={`chat ${reply.user.email === user.email ? "chat-end" : "chat-start"}`}>
-						<div class="chat-header">
-							{reply.user.email}
-							<time class="text-xs opacity-50">{reply.createdAt}</time>
+		{#if replies.length > 0}
+			<div class="card card-compact w-full bg-base-100 shadow-xl">
+				<div class="card-body max-h-[70vh] overflow-x-auto">
+					{#each replies as reply}
+						<div class={`chat ${reply.user.email === user.email ? "chat-end" : "chat-start"}`}>
+							<div class="chat-header">
+								{reply.user.email}
+								<time class="text-xs opacity-50">{reply.createdAt}</time>
+							</div>
+							<div class="chat-bubble pt-3">{reply.message}</div>
 						</div>
-						<div class="chat-bubble pt-3">{reply.message}</div>
-					</div>
-				{/each}
+					{/each}
+				</div>
 			</div>
-		</div>
+		{/if}
 
 		<div class="card card-compact w-full bg-base-100 shadow-xl">
 			<div class="card-body">
